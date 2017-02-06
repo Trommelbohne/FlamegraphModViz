@@ -1,0 +1,4 @@
+<nav search_view="search" color="#e87625">
+  <view name="flamegraph_demo" default="true" />
+  <view name="license_info" />
+</nav>

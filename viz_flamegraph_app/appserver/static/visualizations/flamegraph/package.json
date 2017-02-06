@@ -1,0 +1,23 @@
+{
+  "name": "flamegraph",
+  "version": "1.0.0",
+  "description": "Flamegraph modular viz",
+  "main": "visualization.js",
+  "scripts": {
+    "build": "$SPLUNK_HOME/bin/splunk cmd node ./node_modules/webpack/bin/webpack.js",
+    "devbuild": "$SPLUNK_HOME/bin/splunk cmd node ./node_modules/webpack/bin/webpack.js --progress",
+    "watch": "$SPLUNK_HOME/bin/splunk cmd node ./node_modules/webpack/bin/webpack.js -d --watch --progress",
+    "prebuild": "npm install"
+  },
+  "author": "Dohrendorf_Consist",
+  "license": "Apache 2",
+  "devDependencies": {
+    "webpack": "^1.12.6"
+  },
+  "dependencies": {
+    "jquery": "~2.2.4",
+    "underscore": "~1.8.3",
+    "d3": "3.5.5",
+    "d3-tip": "0.6.7"
+  }
+}

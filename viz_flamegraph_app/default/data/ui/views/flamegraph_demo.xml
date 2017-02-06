@@ -1,0 +1,65 @@
+<dashboard>
+  <label>Flamegraph Demo</label>
+  <description>For the flamegraph to work properly, the value column (count in examples) must be the last column.</description>
+  <row>
+    <panel>
+      <table>
+        <search>
+          <query>| inputlookup testData.csv | table root Weekday sourcetype action result addInfo count</query>
+          <earliest>-4h@m</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="count">10</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="rowNumbers">false</option>
+        <option name="wrap">true</option>
+      </table>
+    </panel>
+    <panel>
+      <title>Flamegraph</title>
+      <viz type="viz_flamegraph_app.flamegraph">
+        <search>
+          <query>| inputlookup testData.csv | table root Weekday sourcetype action result addInfo count</query>
+          <earliest>-60m@m</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="height">275</option>
+        <option name="viz_flamegraph_app.flamegraph.cellHeight">35</option>
+        <option name="viz_flamegraph_app.flamegraph.graphBaseColor">#666666</option>
+        <option name="viz_flamegraph_app.flamegraph.height">250</option>
+        <option name="viz_flamegraph_app.flamegraph.useCustomColor">true</option>
+        <option name="viz_flamegraph_app.flamegraph.width">750</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <viz type="viz_flamegraph_app.flamegraph">
+        <search>
+          <query>index=_internal | stats count by host source sourcetype</query>
+          <earliest>rt-30s</earliest>
+          <latest>rt</latest>
+        </search>
+        <option name="viz_flamegraph_app.flamegraph.cellHeight">18</option>
+        <option name="viz_flamegraph_app.flamegraph.graphBaseColor">#f58f39</option>
+        <option name="viz_flamegraph_app.flamegraph.height">200</option>
+        <option name="viz_flamegraph_app.flamegraph.width">600</option>
+      </viz>
+    </panel>
+    <panel>
+      <viz type="viz_flamegraph_app.flamegraph">
+        <search>
+          <query>index=_internal | stats count by source sourcetype host</query>
+          <earliest>-15m</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="viz_flamegraph_app.flamegraph.cellHeight">18</option>
+        <option name="viz_flamegraph_app.flamegraph.graphBaseColor">#65a637</option>
+        <option name="viz_flamegraph_app.flamegraph.height">200</option>
+        <option name="viz_flamegraph_app.flamegraph.useCustomColor">No</option>
+        <option name="viz_flamegraph_app.flamegraph.width">600</option>
+      </viz>
+    </panel>
+  </row>
+</dashboard>

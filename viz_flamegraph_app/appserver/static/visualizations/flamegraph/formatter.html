@@ -1,0 +1,12 @@
+<form class="splunk-formatter-section" section-label="Customization">
+    <splunk-control-group label="Use custom color">
+    	<splunk-radio-input name="{{VIZ_NAMESPACE}}.useCustomColor" value="No">
+    		<option value="true">Yes</option>
+    		<option value="false">No</option>
+    	</splunk-radio-input>
+    </splunk-control-group>
+    <splunk-control-group label="Color">
+        <splunk-color-picker name="{{VIZ_NAMESPACE}}.graphBaseColor" value="#E600E6">
+        </splunk-color-picker>
+    </splunk-control-group>
+</form>

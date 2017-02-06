@@ -1,0 +1,15 @@
+[views/flamegraph_demo]
+owner = admin
+version = 6.5.1
+modtime = 1486130015.104685000
+
+[nav/default]
+version = 6.5.1
+modtime = 1485967762.447861000
+
+[views/license_info]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = admin
+version = 6.5.1
+modtime = 1486052040.810479000
