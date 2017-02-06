@@ -116,8 +116,12 @@ define(["api/SplunkVisualizationBase","api/SplunkVisualizationUtils"], function(
 	                var nested = new Node('Total', null);
 	                data.rows.forEach(function(row) {
 	                    var currentNode = nested; // reset current Node
-	                    row.forEach(function(field, i) {
-	                        var treePos = currentNode.hasChildNamed(field);
+	                    
+	                    // iterate fields in row. Do not use foreach since abort is necessary on null fields
+	                    for(i=0; i < row.length; i++)
+	                    {
+	                    	var field = row[i];
+	                    	var treePos = currentNode.hasChildNamed(field);
 	                        if (treePos) 
 	                        {
 	                            currentNode = treePos;
@@ -136,12 +140,13 @@ define(["api/SplunkVisualizationBase","api/SplunkVisualizationUtils"], function(
 	                            }
 	                            currentNode = n;
 	                        }
-	                        if ( i == row.length - 2 || field == null ) 
+	                        if ( field == null || i == row.length - 2 ) 
 	                        {
 	                            currentNode.addValue(row[row.length - 1]);
-	                            return;
+	                            break;
 	                        } 
-	                    });
+	                    }	
+	                    
 	                });
 	                return nested;
 	            },
